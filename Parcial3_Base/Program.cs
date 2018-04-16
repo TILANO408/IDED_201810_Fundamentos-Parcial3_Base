@@ -21,6 +21,10 @@ namespace Parcial3_Base
             //Puede usar este main para probar sus métodos.
             Program myProgram = new Program();
 
+            Program palin = new Program();
+            string input = string.Empty;
+            palin.EsPalindromo(input);
+
             Console.WriteLine("Presione Enter para salir");
             Console.ReadLine();
         }
@@ -36,8 +40,23 @@ namespace Parcial3_Base
         /// <param name="B"></param>
         /// <returns>'true' si las matrices pueden sumarse, 'false' de otro modo</returns>
         public bool SePuedenSumarMatrices(int[,] A, int[,] B)
+
         {
-            return false;
+
+            bool valor = false;
+            if (A.GetLength(0) == B.GetLength(0) && A.GetLength(1) == B.GetLength(1))
+            {
+
+
+                valor = true;
+
+
+            }
+            else { valor = false; }
+
+
+
+            return valor;
         }
 
         /// <summary>
@@ -47,7 +66,20 @@ namespace Parcial3_Base
         /// <returns></returns>
         public float PromedioDeArreglo(int[] arr)
         {
-            return 0F;
+            float promedio = 0f;
+            int sumatotal = 0;
+            int totalelementos = arr.Length;
+            for (int i = 0; i < arr.Length; i++)
+            {
+
+
+                sumatotal = sumatotal + arr[i];
+
+            }
+
+            promedio = sumatotal / totalelementos;
+
+            return promedio;
         }
 
         /// <summary>
@@ -58,7 +90,27 @@ namespace Parcial3_Base
         /// <returns>La cantidad de veces que aparece char en input</returns>
         public int ConteoDeCaracter(string input, char car)
         {
-            return 0;
+            int contador = 0;
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == car)
+                {
+
+                    contador += 1;
+
+                }
+
+
+            }
+
+
+
+
+
+
+
+            return contador;
         }
 
         #endregion EASY
@@ -74,7 +126,9 @@ namespace Parcial3_Base
         /// <returns>Un arreglo cuyos elementos están en orden inverso a arr</returns>
         public int[] InvertirArreglo(int[] arr)
         {
+
             return null;
+
         }
 
         /// <summary>
@@ -85,7 +139,32 @@ namespace Parcial3_Base
         /// <returns>'true' si input es palíndromo, `false` de otro modo</returns>
         public bool EsPalindromo(string input)
         {
-            return false;
+            bool valor = true;
+
+            string input2 = "";
+
+
+
+            for (int i = input.Length; i < input.Length - 1; i--)
+            {
+
+
+
+
+                input2 += input[i]; 
+
+
+            }
+
+            if (input == input2)
+            { valor = true; }
+            else { valor = false; }
+
+
+            return valor;
+
+
+
         }
 
         /// <summary>
@@ -95,7 +174,32 @@ namespace Parcial3_Base
         /// <returns>El número correspondiente a la posición n en la serie de Fibonacci</returns>
         public int CalcularFibonacciEn(int n)
         {
-            return 0;
+            int resultado = 1;
+            int x = 1;
+            int y = 0;
+            if (n == 0) { resultado = 0; }
+            if (n == 1) { resultado = 1; }
+            if (n >= 2)
+            {
+                for (int i = 2; i <= n; i++)
+                {
+                    resultado = x + y;
+                    y = x;
+                    x = resultado;
+
+
+                }
+                
+
+            }
+
+
+
+
+
+
+
+            return resultado;
         }
 
         /// <summary>
@@ -106,7 +210,41 @@ namespace Parcial3_Base
         /// <returns>La matriz AxB</returns>
         public int[,] MultiplicarMatrices(int[,] A, int[,] B)
         {
-            return null;
+            int[,] resultado = new int[A.GetLength(0), B.GetLength(1)];
+            if (A.GetLength(1) == B.GetLength(1))
+            {
+
+                for (int i = 0; i < A.GetLength(0); i++)
+                {
+
+                    for (int j = 0; j < A.GetLength(1); j++)
+                    {
+                        for (int k = 0; k < B.GetLength(1); k++)
+                        {
+
+
+                            resultado[i, j] += A[i, k] * B[k, j];
+
+
+                        }
+
+
+
+                    }
+
+
+
+                }
+
+
+
+
+            }
+
+            
+
+            return resultado;
+
         }
 
         #endregion MEDIUM
@@ -126,6 +264,27 @@ namespace Parcial3_Base
             int hrs = 0;
             int mins = 0;
             int segs = 0;
+
+            
+
+                while (totalSegs >= 3600)
+                {
+                    totalSegs = totalSegs - 3600;
+                    hrs = hrs + 1;
+
+                }
+
+                while (totalSegs >= 60)
+                {
+
+                    totalSegs = totalSegs - 60;
+                    mins = mins + 1;
+
+                }
+
+            segs = totalSegs;
+            
+
             return string.Format("{0} hrs : {1} mins : {2} segs", hrs, mins, segs);
         }
 
